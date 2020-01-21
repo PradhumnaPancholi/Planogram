@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import DashBoard from './components/dashboard/Dashboard';
 import Navbar from './components/layout/Navbar.component';
 
 function App() {
@@ -8,6 +9,10 @@ function App() {
     <BrowserRouter>
       <div className='App'></div>
       <Navbar />
+      {/* Rotes */}
+      <Switch>
+        <Route path='/' component={DashBoard}></Route>
+      </Switch>
     </BrowserRouter>
   );
 }
