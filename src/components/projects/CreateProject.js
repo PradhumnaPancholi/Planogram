@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addProject } from '../../store/actions/projectActions';
 
 export class CreateProject extends Component {
 
@@ -9,6 +12,7 @@ export class CreateProject extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.addProject(this.state)
     }
 
     handleInputChange = (e) => {
@@ -18,7 +22,6 @@ export class CreateProject extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='sign-in-form'>
@@ -40,4 +43,11 @@ export class CreateProject extends Component {
     }
 }
 
-export default CreateProject
+//connecting with action-creators//
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addProject: (project) => dispatch(addProject(project))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateProject)
