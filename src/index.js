@@ -3,14 +3,24 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { getFirestore, reduxFirestore } from 'redux-firestore';
 import thunk from 'redux-thunk';
 
 import App from './App';
+import fbConfig from './config/fbConfig';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducers/rootReducer';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer,
+    //to make this implementation of firestore and firebase to work, stick with following version redux-firestore@0.5.7, react-redux-firebase@2.1.8
+    compose(
+        applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+        reactReduxFirebase(fbConfig),
+        reduxFirestore(fbConfig)
+    )
+) 
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
