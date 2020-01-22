@@ -2,10 +2,14 @@ import React from 'react';
 
 import ProjectsListItem from './ProjectListItem';
 
-const ProjectsList = () => {
+const ProjectsList = ({projects}) => {
     return (
         <div className='section project-list'>
-            <ProjectsListItem />
+            { projects && projects.map(project => {
+                return(
+                    <ProjectsListItem project={project}/>
+                )
+            })}
         </div>
     )
 }

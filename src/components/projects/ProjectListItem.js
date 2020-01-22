@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ProjectListItem = () => {
+const ProjectListItem = ({project}) => {
     return (
         <div className='project-list-item card'>
-            <span className='card-title'>Project Title</span>
+            <span className='card-title'>{project.title}</span>
             <p>Author</p>
             <p className='grey-text'>20th Jan, 2pm</p>
         </div>
