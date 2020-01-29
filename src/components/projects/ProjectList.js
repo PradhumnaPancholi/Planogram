@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import ProjectsListItem from './ProjectListItem';
 
@@ -7,7 +8,9 @@ const ProjectsList = ({projects}) => {
         <div className='section project-list'>
             { projects && projects.map(project => {
                 return(
-                    <ProjectsListItem project={project}/>
+                    <Link to={'/projects/' + project.id}>
+                        <ProjectsListItem project={project}/>
+                    </Link>
                 )
             })}
         </div>
