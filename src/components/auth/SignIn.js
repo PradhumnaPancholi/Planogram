@@ -22,11 +22,14 @@ export class SignIn extends Component {
     }
 
     render() {
-        console.log(this.state)
+        const { authError } = this.props
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='sign-in-form'>
                     <h4>Sign In</h4>
+                    {/* conditional rendering for error*/}
+                    { authError ? <p>{authError}</p> : null} 
+                    {/* ------------------------------ */}
                     <div className='input-field'>
                         <label htmlFor='email'>Email</label>
                         <input type='email' id='email' onChange={this.handleInputChange}/>
@@ -44,9 +47,15 @@ export class SignIn extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return{
+        authError: state.auth.authError
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return{
         signIn: (credentials) => dispatch(signIn(credentials))
     }
 }
-export default connect(null, mapDispatchToProps) (SignIn)
+export default connect(mapStateToProps, mapDispatchToProps) (SignIn)
