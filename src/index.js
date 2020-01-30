@@ -17,12 +17,15 @@ const store = createStore(rootReducer,
     //to make this implementation of firestore and firebase to work, stick with following version redux-firestore@0.5.7, react-redux-firebase@2.1.8
     compose(
         applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-        reactReduxFirebase(fbConfig),
-        reduxFirestore(fbConfig)
+        reduxFirestore(fbConfig),
+        reactReduxFirebase(fbConfig, {attachAuthIsReady: true})
     )
 ) 
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+//rp render dom elements only after connection is firebase is establsihed (for better UX via avoiding glitches)
+store.firebaseAuthIsReady.then(() => {
+    ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+})
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
