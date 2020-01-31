@@ -35,9 +35,38 @@ body {
   font-weight: 300;
 }
 
+/* for sign-in & sign-up form */
+.create-project-form{
+  margin-top: 10%;
+  text-align: center;
+  color: #17343B;
+}
+
+.create-project-form label, input, textarea{
+  color: #17343B;
+}
+
+.create-project-form .input-field{
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+}
+
+.create-project-form input:focus, textarea:focus{
+  color: #4E7867;
+}
+
+.create-project-form .btn{
+  background-color: #4E7867;
+  color: #17343B;
+}
+
+/* utility class */
 .light-text{
   color: #4E7867;
 }
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

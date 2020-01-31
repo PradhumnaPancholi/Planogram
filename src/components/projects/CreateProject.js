@@ -24,8 +24,8 @@ export class CreateProject extends Component {
     render() {
         return (
             <div className='container'>
-                <form onSubmit={this.handleSubmit} className='sign-in-form'>
-                    <h4>Create Project</h4>
+                <form onSubmit={this.handleSubmit} className='create-project-form'>
+                    <h4 className='text-center'>Create Project</h4>
                     <div className='input-field'>
                         <label htmlFor='title'>Title</label>
                         <input type='text' id='title' onChange={this.handleInputChange}/>
