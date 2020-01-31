@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -16,7 +17,7 @@ const ProjectDetails = (props) => {
                     </div>
                     <div className='card-action grey-text'>
                         <p>Added By: {project.authorFirstName} {project.authorLastName}</p>
-                        {/* <p>{project.createdAt}</p> */}
+                        <p>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
                     </div>
                 </div>
             </div>
