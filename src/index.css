@@ -15,12 +15,24 @@ body {
   color: #739E5A !important;
 }
 
-/* for project list */
-.project-list-item{
+/* for project list, details, */
+.project-list-item, .project-details{
   background-color: #C1C44D;
   opacity: 0.9;
   color: #17343B;
   padding: 2%;
+}
+
+.project-details .card-title{
+  color: #17343B;
+  font-size: 300%;
+  font-weight: 500;
+}
+
+.project-details .project-description{
+  padding-top: 5%;
+  font-size: 150%;
+  font-weight: 300;
 }
 
 .light-text{

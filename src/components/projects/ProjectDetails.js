@@ -9,13 +9,13 @@ const ProjectDetails = (props) => {
 
     if (project){
         return(
-            <div className='section project-details container'>
-                <div className='card'>
+            <div className='section container'>
+                <div className='card project-details'>
                     <div className='card-content'>
                         <span className='card-title'>{project.title}</span>
-                        <p>{project.content}</p>
+                        <p className='project-description'>{project.content}</p>
                     </div>
-                    <div className='card-action grey-text'>
+                    <div className='card-action light-text'>
                         <p>Added By: {project.authorFirstName} {project.authorLastName}</p>
                         <p>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
                     </div>
