@@ -14,6 +14,18 @@ body {
 .navigation-links a, .brand-logo {
   color: #739E5A !important;
 }
+
+/* for project list */
+.project-list-item{
+  background-color: #C1C44D;
+  opacity: 0.9;
+  color: #17343B;
+  padding: 2%;
+}
+
+.light-text{
+  color: #4E7867;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

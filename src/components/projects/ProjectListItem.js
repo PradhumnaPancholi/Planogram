@@ -6,7 +6,7 @@ const ProjectListItem = ({project}) => {
         <div className='project-list-item card'>
             <span className='card-title'>{project.title}</span>
             <p>Added By: {project.authorFirstName}</p>
-            <p className='grey-text'>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
+            <p className='light-text'>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
         </div>
     )
 }
