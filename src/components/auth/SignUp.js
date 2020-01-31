@@ -24,7 +24,6 @@ export class SignUp extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='sign-up-form'>

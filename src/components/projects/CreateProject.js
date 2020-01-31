@@ -43,6 +43,9 @@ export class CreateProject extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state)
+}
 //connecting with action-creators//
 const mapDispatchToProps = (dispatch) => {
     return {

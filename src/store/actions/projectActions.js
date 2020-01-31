@@ -1,7 +1,10 @@
 export const addProject = (project) => {
     return (dispatch, getState, {getFirestore, getFirebase}) => {
-        //make async call to the db//
+        // initiate the firestore db//
         const db = getFirestore()
+        //get user data//
+        const profile = getState()
+        //make async call to the db//
         db.collection('projects').add({
             ...project,
             authorFirstName: 'Pradhumna',
