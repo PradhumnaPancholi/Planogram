@@ -4,7 +4,7 @@ const ProjectListItem = ({project}) => {
     return (
         <div className='project-list-item card'>
             <span className='card-title'>{project.title}</span>
-            <p>Author</p>
+            <p>Added By: {project.authorFirstName}</p>
             <p className='grey-text'>20th Jan, 2pm</p>
         </div>
     )
