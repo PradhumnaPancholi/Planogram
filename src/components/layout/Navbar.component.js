@@ -18,7 +18,7 @@ const Navbar = (props) => {
     return(
         <nav>   
             <div className='nav-wrapper'>
-                <Link to='/' className='brand-logo'>Planogram</Link>
+                <Link to='/' className=' left brand-logo'>Planogram</Link>
                 {visibleLinks}
             </div>
         </nav>
