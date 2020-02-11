@@ -23,7 +23,26 @@ exports.projectCreated = functions.firestore.document('projects/{projectId}').on
     //pass notifcation to create a new document in collection//
     return createNotification(notification)
 })
+// function to trigger a notification when a new user is created//
+exports.userCreated = functions.auth.user().onCreate(user => {
 
+    //get doc data (firestore user collection) from user(firebase auth)
+    return firebaseAdmin.firestore().collection('users').doc(user.uid).get().then( doc => {
+        
+        //get user data from doc in response//
+        let newUser = doc.data()
+
+        //create a notification object//
+        let notication = {
+            content: `joined the team`,
+            user: `${user.firstName} ${user.lastName}`,
+            time: firebaseAdmin.firestore.FieldValue.serverTimestamp()
+        }
+
+        //pass notifcation to create a new document in collection//
+        return createNotification(notication)
+    })
+})
 // dummy function
 exports.helloWorld = functions.https.onRequest((request, response) => {
  response.send("Hello from Firebase!");
