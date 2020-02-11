@@ -5,14 +5,14 @@ import firebase from 'firebase/app';
 
 // app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAXGQXOJBsGUXbr9xpO_vuHEIQQEDYrM5w",
-    authDomain: "planogram-85f37.firebaseapp.com",
-    databaseURL: "https://planogram-85f37.firebaseio.com",
-    projectId: "planogram-85f37",
-    storageBucket: "planogram-85f37.appspot.com",
-    messagingSenderId: "686922632873",
-    appId: "1:686922632873:web:2a5ff112d7929787fba3b8",
-    measurementId: "G-QZPE0FZ8HS"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MSG_SENDER_ID,
+    appId: process.env.APP_ID,
+    measurementId: process.env.MEASUREMENT_ID
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
