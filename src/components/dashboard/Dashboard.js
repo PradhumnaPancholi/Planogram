@@ -10,8 +10,9 @@ import Notifications from './Notifications';
 class Dashboard extends Component{
     render(){
         const {projects, notifications, auth} = this.props
-
+        // for route guarding//
         if(!auth.uid) return <Redirect to='/signin'/>
+        // -----------------//
         return(
             <div className='container dashboard'>
                 <div className='row'>
