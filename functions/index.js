@@ -35,7 +35,7 @@ exports.userCreated = functions.auth.user().onCreate(user => {
         //create a notification object//
         let notication = {
             content: `joined the team`,
-            user: `${user.firstName} ${user.lastName}`,
+            user: `${newUser.firstName} ${newUser.lastName}`,
             time: firebaseAdmin.firestore.FieldValue.serverTimestamp()
         }
 
