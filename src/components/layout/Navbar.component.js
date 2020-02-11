@@ -6,11 +6,15 @@ import SignedInOptions from './SignedInOptions';
 import SignedOutOptions from './SignedOutOptions';
 
 const Navbar = (props) => {
-    console.log(props)
     //logic to verify auth status and show links accordingly//
     let visibleLinks
+
     if(props.auth.uid){
-        visibleLinks = <SignedInOptions />
+        // get user data to display initials in navbar //
+        let userFirstName = props.userProfile.firstName
+        let userInitial = userFirstName ? userFirstName.charAt(0) : 'U'
+
+        visibleLinks = <SignedInOptions userInitial={userInitial}/>
     }else{
         visibleLinks = <SignedOutOptions />
     }
@@ -27,7 +31,8 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        userProfile: state.firebase.profile
     }
 }
  export default connect(mapStateToProps) (Navbar)
