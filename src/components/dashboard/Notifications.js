@@ -1,5 +1,6 @@
-import moment from 'moment';
 import React from 'react';
+
+import NotificationItem from '../notification/NotificationItem';
 
 const Notifications = (props) => {
     const {notifications} = props
@@ -8,20 +9,14 @@ const Notifications = (props) => {
             <div className='card z-depth-0'>
                 <div className='card-content'>
                     <div className='card-title'> Notifications</div>
-                    <ul className='notifications'>
+                    <div className='notifications'>
                         {/* render notifications if exist - may change this with reusable component*/}
                         { notifications && notifications.map(notification => {
                             return(
-                                <li key={notification.id}>
-                                    <span>{notification.user} </span>
-                                    <span>{notification.content}</span>
-                                    <div>
-                                        {moment(notification.time.toDate()).fromNow()}
-                                    </div>
-                                </li>
+                                <NotificationItem key={notification.id} notification={notification}/>
                             )
                         })}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>

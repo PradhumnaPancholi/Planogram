@@ -66,6 +66,18 @@ body {
   color: #17343B;
 }
 
+.notification{
+  background-color: #17343B;
+  color: #739E5A;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 0.5%;
+}
+
+.notification div{
+  color: #4E7867;
+}
+
 /* utility class */
 .light-text{
   color: #4E7867;
