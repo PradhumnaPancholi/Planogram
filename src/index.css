@@ -36,6 +36,10 @@ body {
   font-weight: 300;
 }
 
+.project-details .btn{
+  float: right;
+}
+
 /* for sign-in,sign-up, create-project  form */
 .create-project-form , .sign-in-form, .sign-up-form{
   margin-top: 10% !important;

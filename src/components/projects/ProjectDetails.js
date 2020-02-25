@@ -7,6 +7,10 @@ import { compose } from 'redux';
 
 const ProjectDetails = (props) => {
     const { project, auth } = props
+    //redirect handler//
+    const redirectHandler = () => {
+        props.history.push('/')
+    }
     // for route guarding//
     if(!auth.uid) return <Redirect to='/signin'/>
     // -----------------//
@@ -18,10 +22,13 @@ const ProjectDetails = (props) => {
                         <span className='card-title'>{project.title}</span>
                         <p className='project-description'>{project.content}</p>
                     </div>
-                    <div className='card-action light-text'>
+                    <span className='card-action light-text'>
                         <p>Added By: {project.authorFirstName} {project.authorLastName}</p>
                         <p>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
-                    </div>
+                    </span>
+                    <span>
+                        <button className='btn' onClick={redirectHandler}>Close</button>
+                    </span>
                 </div>
             </div>
         )
