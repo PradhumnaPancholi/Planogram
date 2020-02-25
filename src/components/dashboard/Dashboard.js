@@ -28,7 +28,6 @@ const Dashboard = (props) => {
         }
 //to get state from reducer//
 const mapStateToProps = (state) => {
-    console.log(state)
     return { 
         projects: state.firestore.ordered.projects,
         notifications: state.firestore.ordered.notifications,
@@ -39,7 +38,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'projects'},
+        { collection: 'projects', orderBy:['createdAt', 'desc']},
         { collection: 'notifications', limit: 5}
     ])
 )(Dashboard)
