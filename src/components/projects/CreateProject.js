@@ -1,43 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { addProject } from '../../store/actions/projectActions';
 
-export class CreateProject extends Component {
+const CreateProject = (props) => {
 
-    state = {
+    //for state of form//
+    const [data, setData] = useState({
         title: '',
         content: ''
-    }
+    })
 
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        this.props.addProject(this.state)
+        props.addProject(data)
     }
 
-    handleInputChange = (e) => {
-        this.setState({
-            [e.target.id] :e.target.value
+    const handleInputChange = (e) => {
+        const {name, value} = e.target
+        setData({
+            //to avoid mutating//
+            ...data,
+            //to set values//
+            [name]: value
         })
     }
-
-    render() {
-        const {auth} = this.props
-        // for route guarding//
-        if(!auth.uid) return <Redirect to='/signin'/>
-        // -----------------//
-        return (
+    const {auth} = props
+    // for route guarding//
+    if(!auth.uid) return <Redirect to='/signin'/>
+    
+        return(
             <div className='container'>
-                <form onSubmit={this.handleSubmit} className='create-project-form'>
-                    <h4 className='text-center'>Create Project</h4>
+                <form onSubmit={handleSubmit} className='create-project-form'>
+                    <h4 className='text-center'>Create Project</h4> 
                     <div className='input-field'>
                         <label htmlFor='title'>Title</label>
-                        <input type='text' id='title' onChange={this.handleInputChange}/>
+                        <input type='text' value={data.title} name='title' id='title' onChange={handleInputChange}/>
                     </div>
                     <div className='input-field'>
                         <label htmlFor='content'>Content</label>
-                        <textarea id='content' className='materialize-textarea' onChange={this.handleInputChange} />
+                        <textarea id='content' value={data.content} name='content' className='materialize-textarea' onChange={handleInputChange} />
                     </div>
                     <div className='input-field'>
                         <button className='btn lighten-1'>Save</button>
@@ -46,7 +49,6 @@ export class CreateProject extends Component {
             </div>
         )
     }
-}
 
 const mapStateToProps = (state) => {
     return{
