@@ -17,4 +17,4 @@
 
 ## Architecture/Design:-
 
-The app is built completely using functional components to keep code cleener. Apart from that, each component handle just one functionality for provide seperation of concern.
+The app is built completely using functional components to keep code cleener. Apart from that, each component handle just one functionality for provide seperation of concern. Everything the is related to visual change is handled by component level state, while everything else is handled by application level state using redux to have single source of truth.
