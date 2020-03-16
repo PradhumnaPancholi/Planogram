@@ -5,11 +5,18 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 
+import { deleteProject } from '../../store/actions/projectActions';
+
 const ProjectDetails = (props) => {
     const { project, auth } = props
     //redirect handler//
     const redirectHandler = () => {
         props.history.push('/')
+    }
+    //delete handler//
+    const deleteHandler = () => {
+        let  { projectId } = props
+        props.deleteProject(projectId)
     }
     // for route guarding//
     if(!auth.uid) return <Redirect to='/signin'/>
@@ -28,6 +35,7 @@ const ProjectDetails = (props) => {
                     </span>
                     <span>
                         <button className='btn' onClick={redirectHandler}>Close</button>
+                        <button className='btn' onClick={deleteHandler}>Delete</button>
                     </span>
                 </div>
             </div>
@@ -44,13 +52,20 @@ const mapStateToProps = (state, ownProps) => {
     const projects = state.firestore.data.projects
     const project = projects ? projects[id] : null
     return{
+        projectId: id,
         project: project,
         auth: state.firebase.auth
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return{
+        deleteProject: (id) => dispatch(deleteProject(id))
+    }
+}
+
 export default compose( 
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'projects'}
     ])

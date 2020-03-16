@@ -21,3 +21,13 @@ export const addProject = (project) => {
         })
     }
 }
+
+export const deleteProject = (id) => {
+    return (dispatch, getState, {getFirestore}) => {
+        //initiate the firestore db//
+        const db = getFirestore()
+        //making the async call to the db//
+        db.collection('projects').doc(id).delete()
+        console.log('From delete project action')
+    }
+}
