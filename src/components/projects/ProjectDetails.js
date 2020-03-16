@@ -16,6 +16,7 @@ const ProjectDetails = (props) => {
     //delete handler//
     const deleteHandler = () => {
         let  { projectId } = props
+        //request to delete project//
         props.deleteProject(projectId)
     }
     // for route guarding//

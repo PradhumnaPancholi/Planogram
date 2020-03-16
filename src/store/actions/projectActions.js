@@ -23,11 +23,16 @@ export const addProject = (project) => {
 }
 
 export const deleteProject = (id) => {
-    return (dispatch, getState, {getFirestore}) => {
+    return (dispatch, getState, {getFirestore, getFirebase}) => {
         //initiate the firestore db//
         const db = getFirestore()
         //making the async call to the db//
-        db.collection('projects').doc(id).delete()
-        console.log('From delete project action')
+        db.collection('projects').doc(id).delete().then(() => {
+            //dispatch the the function//
+            dispatch({ type: 'DELETE_PROJECT' })
+        }).catch(error => {
+            //logging error//
+            dispatch({ type: 'DELETE_PROJECT_ERROR', error})
+        })
     }
 }
