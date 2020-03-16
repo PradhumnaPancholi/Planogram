@@ -7,17 +7,19 @@ import { compose } from 'redux';
 
 import { deleteProject } from '../../store/actions/projectActions';
 
+
 const ProjectDetails = (props) => {
     const { project, auth } = props
     //redirect handler//
     const redirectHandler = () => {
-        props.history.push('/')
+        return <Redirect to='/' />
     }
     //delete handler//
     const deleteHandler = () => {
         let  { projectId } = props
         //request to delete project//
         props.deleteProject(projectId)
+        props.history.push('/')
     }
     // for route guarding//
     if(!auth.uid) return <Redirect to='/signin'/>

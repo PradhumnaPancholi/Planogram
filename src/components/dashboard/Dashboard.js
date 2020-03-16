@@ -8,7 +8,6 @@ import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 
 const Dashboard = (props) => {
-
         const {projects, notifications, auth} = props
         // for route guarding//
         if(!auth.uid) return <Redirect to='/signin'/>
