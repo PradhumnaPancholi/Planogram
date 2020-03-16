@@ -12,7 +12,7 @@ const ProjectDetails = (props) => {
     const { project, auth } = props
     //redirect handler//
     const redirectHandler = () => {
-        return <Redirect to='/' />
+        props.history.push('/')
     }
     //delete handler//
     const deleteHandler = () => {
@@ -32,14 +32,16 @@ const ProjectDetails = (props) => {
                         <span className='card-title'>{project.title}</span>
                         <p className='project-description'>{project.content}</p>
                     </div>
-                    <span className='card-action light-text'>
-                        <p>Added By: {project.authorFirstName} {project.authorLastName}</p>
-                        <p>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
-                    </span>
-                    <span>
-                        <button className='btn' onClick={redirectHandler}>Close</button>
-                        <button className='btn' onClick={deleteHandler}>Delete</button>
-                    </span>
+                    <div className='actions'>
+                        <span className='light-text'>
+                            <p>Added By: {project.authorFirstName} {project.authorLastName}</p>
+                            <p>{moment(project.createdAt.toDate()).format('MMM Do YYYY')}</p>
+                        </span>
+                        <span>
+                            <button className='btn close-button' onClick={redirectHandler}>Close</button>
+                            <button className='btn delete-button' onClick={deleteHandler}>Delete</button>
+                        </span>
+                    </div>
                 </div>
             </div>
         )

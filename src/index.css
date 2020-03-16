@@ -37,9 +37,25 @@ body {
 }
 
 .project-details .btn{
+  display:inline-block;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+
+.delete-button {
+  background-color: #ff4d4d !important;
+  color: white !important;
+  float: left;
+}
+
+.close-button {
   float: right;
 }
 
+.project-details {
+  height: 55vh;
+}
 /* for sign-in,sign-up, create-project  form */
 .create-project-form , .sign-in-form, .sign-up-form{
   margin-top: 10% !important;

@@ -15,6 +15,7 @@ const CreateProject = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.addProject(data)
+        props.history.push('/')
     }
 
     const handleInputChange = (e) => {
